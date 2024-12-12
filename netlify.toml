@@ -1,0 +1,16 @@
+[build]
+  # Tentukan folder build output dari Laravel
+  publish = "public"
+  
+  # Tentukan command untuk build, seperti kompilasi assets atau optimasi
+  command = "composer install && npm install && npm run build"
+
+[build.environment]
+  # Set environment variables jika diperlukan
+  PHP_VERSION = "8.1"
+
+[[redirects]]
+  # Redirect 404 error ke halaman index.php atau file lain
+  from = "/*"
+  to = "/index.php"
+  status = 200
