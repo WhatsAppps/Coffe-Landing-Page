@@ -1,0 +1,573 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --primary: #6F4F1A; /* Coklat gelap seperti kopi */
+    --secondary: #4B4B4B; /* Abu-abu gelap */
+    --light: #F1E4D1; /* Krem terang */
+    --dark: #2B1A0E; /* Coklat tua */
+}
+
+h4,
+h5,
+h6,
+.h4,
+.h5,
+.h6 {
+    font-weight: 600 !important;
+}
+.text-primary {
+    color: var(--primary) !important; /* Menggunakan warna coklat yang sudah didefinisikan */
+}
+.py-6 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+.my-6 {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+.back-to-top {
+    position: fixed;
+    display: none;
+    right: 30px;
+    bottom: 30px;
+    z-index: 99;
+}
+
+/*** Spinner ***/
+#spinner {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 99999;
+}
+
+#spinner.show {
+    transition: opacity .5s ease-out, visibility 0s linear 0s;
+    visibility: visible;
+    opacity: 1;
+}
+
+/*** Button ***/
+.btn {
+    font-weight: 500;
+    transition: .5s;
+}
+/* Tombol utama */
+.btn.btn-primary {
+    color: #FFFFFF !important; /* Warna teks putih */
+    background-color: var(--primary) !important;  /* Coklat gelap */
+    border-color: var(--primary) !important; /* Coklat gelap untuk border */
+}
+
+.btn-square.bg-primary {
+    background-color: #6c4f1d !important; /* Misalnya, ubah ke coklat seperti tema kopi */
+}
+/* Mengubah warna border menjadi coklat */
+.border-primary {
+    border-color: #6c4f1d !important; /* Ganti dengan warna coklat */
+}
+
+/* Tombol hover */
+.btn.btn-primary:hover {
+    background-color: var(--dark) !important;  /* Coklat tua saat hover */
+    border-color: var(--dark) !important; /* Coklat tua untuk border saat hover */
+    color: #FFFFFF !important; /* Warna teks tetap putih saat hover */
+}
+
+.btn-square {
+    width: 38px;
+    height: 38px;
+}
+
+.btn-sm-square {
+    width: 32px;
+    height: 32px;
+}
+
+.btn-lg-square {
+    width: 48px;
+    height: 48px;
+}
+
+.btn-square,
+.btn-sm-square,
+.btn-lg-square {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+}
+
+/*** Navbar ***/
+.navbar .dropdown-toggle::after {
+    border: none;
+    content: "\f107";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+.navbar .navbar-nav .nav-link {
+    padding: 35px 15px;
+    color: var(--light); /* Krem terang */
+    outline: none;
+}
+
+.navbar .navbar-nav .nav-link:hover,
+.navbar .navbar-nav .nav-link.active {
+    color: var(--primary)!important /* Coklat gelap */
+}
+
+.navbar.fixed-top {
+    transition: .5s;
+}
+
+@media (max-width: 991.98px) {
+    .navbar .navbar-nav {
+        margin-top: 10px;
+        border-top: 1px solid rgba(255, 255, 255, .3);
+        background: var(--dark); /* Coklat tua */
+    }
+
+    .navbar .navbar-nav .nav-link {
+        padding: 10px 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu {
+        display: block;
+        visibility: hidden;
+        top: 100%;
+        transform: rotateX(-75deg);
+        transform-origin: 0% 0%;
+        transition: .5s;
+        opacity: 0;
+    }
+
+    .navbar .nav-item:hover .dropdown-menu {
+        transform: rotateX(0deg);
+        visibility: visible;
+        transition: .5s;
+        opacity: 1;
+    }
+}
+
+/*** Header ***/
+.header-carousel .owl-carousel-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 0, 0, .5);
+}
+
+@media (max-width: 768px) {
+    .header-carousel .owl-carousel-item {
+        position: relative;
+        min-height: 600px;
+    }
+
+    .header-carousel .owl-carousel-item img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .header-carousel .owl-carousel-item p {
+        font-size: 16px !important;
+    }
+}
+
+.header-carousel .owl-nav {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    margin: -40px auto 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-carousel .owl-nav::before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #FFFFFF;
+    transform: rotate(45deg);
+}
+
+.header-carousel .owl-nav .owl-prev,
+.header-carousel .owl-nav .owl-next {
+    position: relative;
+    font-size: 40px;
+    color: var(--primary); /* Coklat gelap */
+    transition: .5s;
+    z-index: 1;
+}
+
+.header-carousel .owl-nav .owl-prev:hover,
+.header-carousel .owl-nav .owl-next:hover {
+    color: var(--dark); /* Coklat tua */
+}
+
+.page-header {
+    margin-bottom: 6rem;
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url(../img/carousel-1.jpg) center center no-repeat;
+    background-size: cover;
+    background-color: var(--primary) !important; /* Coklat gelap */
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    color: var(--light); /* Krem terang */
+}
+
+/*** Facts ***/
+.fact-item {
+    transition: .5s;
+}
+
+.fact-item:hover {
+    margin-top: -10px;
+    background: #FFFFFF !important;
+    box-shadow: 0 0 45px rgba(0, 0, 0, .07);
+}
+
+/*** About ***/
+.img-twice::before {
+    position: absolute;
+    content: "";
+    width: 60%;
+    height: 80%;
+    top: 10%;
+    left: 20%;
+    background: var(--primary); /* Coklat gelap */
+    border: 25px solid var(--light); /* Krem terang */
+    border-radius: 6px;
+    z-index: -1;
+}
+
+/*** Product ***/
+.product-item {
+    transition: .5s;
+}
+
+.product-item:hover {
+    background: var(--primary) !important; /* Coklat gelap */
+}
+
+.product-item:hover * {
+    color: var(--light); /* Krem terang */
+}
+
+.product-item:hover .border-primary {
+    border-color: var(--light) !important;
+}
+.product-img {
+    width: 100%; /* Gambar menyesuaikan lebar kolom */
+    height: auto; /* Otomatis menjaga proporsi */
+    max-width: 500px; /* Standar maksimal untuk gambar */
+    max-height: 400px; /* Standar maksimal untuk gambar */
+    object-fit: cover; /* Menjaga konten tetap terlihat */
+    display: block;
+    margin: 0 auto; /* Memusatkan gambar di kolom */
+}
+
+@media (max-width: 768px) {
+    .product-img {
+        max-width: 100%; /* Pastikan tetap responsif di layar kecil */
+        max-height: auto;
+    }
+}
+
+
+.team-image {
+    width: 100%; /* Gambar menyesuaikan lebar kolom */
+    height: 350px; /* Tinggi tetap untuk menjaga konsistensi */
+    object-fit: cover; /* Memastikan gambar tetap proporsional */
+    border-radius: 8px; /* Opsional: membuat gambar lebih estetik */
+}
+
+.team-item {
+    background-color: #fff; /* Warna latar belakang jika dibutuhkan */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Opsional: menambahkan bayangan */
+}
+
+.product-item .product-overlay {
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, .5);
+    overflow: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+.about-img {
+    width: 100%; /* Mengisi lebar kolom */
+    height: 80%; /* Mengisi tinggi kolom */
+    object-fit: cover; /* Memastikan gambar mengisi area tanpa merusak proporsi */
+    border-radius: 40px !important; /* Sudut membulat pada gambar */
+}
+
+/* Memastikan ukuran gambar tidak terlalu besar di layar besar */
+@media (min-width: 768px) {
+    .about-img {
+        max-height: 450px; /* Membatasi tinggi gambar pada layar besar */
+        object-fit: cover; /* Menjaga proporsi gambar */
+    }
+}
+
+/* Responsif untuk perangkat kecil */
+@media (max-width: 768px) {
+    .about-img {
+        max-height: 250px; /* Menurunkan ukuran tinggi gambar pada layar kecil */
+    }
+    
+    /* Menjadikan kolom 100% lebar pada perangkat kecil */
+    .col-lg-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    
+    /* Menjaga teks lebih kecil di perangkat mobile */
+    .display-6 {
+        font-size: 2rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1.5rem; /* Ukuran tombol lebih kecil di perangkat kecil */
+    }
+}
+
+.product-item:hover .product-overlay {
+    height: 100%;
+    opacity: 1;
+}
+
+/*** Team ***/
+.team-item .team-text {
+    position: relative;
+    height: 100px;
+    overflow: hidden;
+}
+
+.team-item .team-title {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--light); /* Krem terang */
+    transition: .5s;
+}
+
+.team-item:hover .team-title {
+    top: -100px;
+}
+
+.team-item .team-social {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 100px;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary); /* Coklat gelap */
+    transition: .5s;
+}
+
+.team-item .team-social .btn {
+    margin: 0 3px;
+}
+
+.team-item:hover .team-social {
+    top: 0;
+}
+
+/*** Testimonial ***/
+.testimonial-carousel .owl-item .testimonial-item img {
+    width: 60px;
+    height: 60px;
+}
+
+.testimonial-carousel .owl-item .testimonial-item,
+.testimonial-carousel .owl-item .testimonial-item * {
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item {
+    background: var(--primary) !important; /* Coklat gelap */
+}
+
+.testimonial-carousel .owl-item.center .testimonial-item * {
+    color: #FFFFFF !important;
+}
+
+.testimonial-carousel .owl-nav {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.testimonial-carousel .owl-nav .owl-prev,
+.testimonial-carousel .owl-nav .owl-next {
+    margin: 0 12px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    font-size: 22px;
+    color: var(--light); /* Krem terang */
+    background: var(--primary); /* Coklat gelap */
+    transition: .5s;
+}
+
+.testimonial-carousel .owl-nav .owl-prev:hover,
+.testimonial-carousel .owl-nav .owl-next:hover {
+    color: var(--primary); /* Coklat gelap */
+    background: var(--dark); /* Coklat tua */
+}
+
+/*** Footer ***/
+.footer .btn.btn-link {
+    display: block;
+    margin-bottom: 5px;
+    padding: 0;
+    text-align: left;
+    color: var(--light); /* Krem terang */
+    font-weight: normal;
+    text-transform: capitalize;
+    transition: .3s;
+}
+
+.footer .btn.btn-link::before {
+    position: relative;
+    content: "\f105";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--light); /* Krem terang */
+    margin-right: 10px;
+}
+
+
+.footer .btn.btn-link:hover {
+    color: var(--primary);  /* Coklat gelap */
+    letter-spacing: 1px;
+    box-shadow: none;
+}
+
+.copyright {
+    background: var(--dark); /* Coklat tua */
+}
+
+.copyright a {
+    color: var(--primary); /* Coklat gelap */
+}
+
+.copyright a:hover {
+    color: var(--light); /* Krem terang */
+}
+/* Container for the card tilt effect */
+.card-tilt {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    overflow: hidden;
+}
+
+/* Background for 3D Effect */
+.card-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #ddd; /* Give a background color to create depth */
+    z-index: -1;
+    transform: scale(1.05);
+    transition: transform 0.5s ease;
+    border-radius: 70px !important;
+}
+
+/* Applying the tilt on hover */
+.card-tilt img {
+    border-radius: 40px !important;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+    will-change: transform;
+}
+
+.card-tilt:hover {
+    transform: rotateY(10deg) rotateX(10deg) translateZ(20px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card-tilt:hover .card-background {
+    transform: scale(1.1);
+}
+
+.card-tilt:hover img {
+    transform: rotateY(50deg) rotateX(30deg) scale(1.05);
+}
+
+/* Parallax effect for the background images */
+.parallax {
+    /* background-image: url('/img/about-1.jpg'); */
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.parallax-content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animasi Fade-In yang lebih lama */
+.wow.fadeInUp {
+    opacity: 0;
+    transform: translateY(100px);
+    animation: fadeInUp 1.5s forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
